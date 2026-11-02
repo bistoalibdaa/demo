@@ -37,4 +37,10 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) { service.delete(id); }
+
+    @GetMapping("/{id}/summary")
+    public EmployeeSummaryDTO getOneSummary(@PathVariable Long id) {
+        Employee employee =  service.findById(id);
+        return new EmployeeSummaryDTO(employee);
+    }
 }
